@@ -1,0 +1,78 @@
+.formContainer {
+  margin-top: 1rem;
+}
+
+.formContainer input {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  height: 2.5rem;
+  padding: 0 0.5rem;
+}
+
+.formCard {
+  background-color: #ffffff;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formContainer button {
+  background-color: #ff6200ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  height: 2.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: semi-bold;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #d35100ff;
+  }
+}
+
+.formContainer div {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+.formContainer {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer label {
+  font-size: 0.8rem;
+}
+
+.footer {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.footer a {
+  color: #ff6200ff;
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
