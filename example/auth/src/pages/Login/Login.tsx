@@ -1,12 +1,27 @@
+import { useForm } from "react-hook-form";
 import "./login.css";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LoginSchema, type LoginData } from "../../types/auth";
 
 export function Login() {
+  const { register, handleSubmit } = useForm({
+    resolver: zodResolver(LoginSchema),
+  });
+
+  function onSubmit(data: LoginData) {
+    console.log(data);
+  }
+
   return (
     <div className="container">
       <div className="formCard">
         <h1>Login</h1>
         <p className="subtitle">Faça login na sua conta!</p>
-        <form className="formContainer" autoComplete="none">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="formContainer"
+          autoComplete="none"
+        >
           <div>
             <label htmlFor="email">Email:</label>
             <input
@@ -14,6 +29,7 @@ export function Login() {
               id="email"
               placeholder="Digite seu email"
               autoComplete="none"
+              {...register("email", { required: true })}
               required
             />
           </div>
@@ -24,6 +40,7 @@ export function Login() {
               id="password"
               placeholder="Digite sua senha"
               required
+              {...register("password", { required: true })}
               autoComplete="none"
             />
           </div>
