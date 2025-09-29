@@ -4,7 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema, type LoginData } from "../../types/auth";
 
 export function Login() {
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = useForm({
     resolver: zodResolver(LoginSchema),
   });
 
@@ -32,6 +36,9 @@ export function Login() {
               {...register("email", { required: true })}
               required
             />
+            {errors.email && (
+              <span className="errorMessage">{errors.email.message}</span>
+            )}
           </div>
           <div>
             <label htmlFor="password">Senha:</label>
@@ -43,8 +50,13 @@ export function Login() {
               {...register("password", { required: true })}
               autoComplete="none"
             />
+            {errors.password && (
+              <span className="errorMessage">{errors.password.message}</span>
+            )}
           </div>
-          <button type="submit">Entrar</button>
+          <button type="submit" disabled={isSubmitting}>
+            Entrar
+          </button>
         </form>
         <p className="footer">
           Não tem conta? <a href="/sign-in">Cadastre-se</a>

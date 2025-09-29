@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import "./signin.css";
 import { RegisterSchema, type RegisterData } from "../../types/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { required } from "zod/v4-mini";
 
 export function SignIn() {
   const {
@@ -20,7 +19,7 @@ export function SignIn() {
   return (
     <div className="container">
       <div className="formCard">
-        <h1 >Cadastro</h1>
+        <h1>Cadastro</h1>
         <p className="subtitle">Crie sua conta para acessar o sistema</p>
         <form onSubmit={handleSubmit(onSubmit)} className="formContainer">
           <div>
@@ -31,6 +30,9 @@ export function SignIn() {
               required
               {...register("name", { required: true })}
             />
+            {errors.name && (
+              <span className="errorMessage">{errors.name.message}</span>
+            )}
           </div>
           <div>
             <label htmlFor="email">Email</label>
@@ -40,6 +42,9 @@ export function SignIn() {
               required
               {...register("email", { required: true })}
             />
+            {errors.email && (
+              <span className="errorMessage">{errors.email.message}</span>
+            )}
           </div>
           <div>
             <label htmlFor="password">Senha</label>
@@ -49,6 +54,9 @@ export function SignIn() {
               required
               {...register("password", { required: true })}
             />
+            {errors.password && (
+              <span className="errorMessage">{errors.password.message}</span>
+            )}
           </div>
           <div>
             <label htmlFor="confirmPassword">Confirmar Senha</label>
@@ -58,6 +66,11 @@ export function SignIn() {
               required
               {...register("confirmPassword", { required: true })}
             />
+            {errors.confirmPassword && (
+              <span className="errorMessage">
+                {errors.confirmPassword.message}
+              </span>
+            )}
           </div>
           <button type="submit">Cadastrar</button>
         </form>
