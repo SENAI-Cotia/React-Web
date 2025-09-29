@@ -2,18 +2,28 @@ import { useForm } from "react-hook-form";
 import "./signin.css";
 import { RegisterSchema, type RegisterData } from "../../types/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "../../lib/axios";
+import { useNavigate } from "react-router-dom";
 
 export function SignIn() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(RegisterSchema),
   });
 
-  function onSubmit(data: RegisterData) {
-    console.log(data);
+  async function onSubmit(data: RegisterData) {
+    try {
+      await api.post("/auth/register", data);
+
+      navigate("/");
+    } catch (error: any) {
+      alert(error.response?.data?.message || "Erro ao fazer cadastro");
+    }
   }
 
   return (
@@ -72,7 +82,9 @@ export function SignIn() {
               </span>
             )}
           </div>
-          <button type="submit">Cadastrar</button>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Cadastrando..." : "Cadastrar"}
+          </button>
         </form>
         <p className="footer">
           Já tem conta? <a href="/">Faça login</a>

@@ -2,8 +2,12 @@ import { useForm } from "react-hook-form";
 import "./login.css";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema, type LoginData } from "../../types/auth";
+import { api } from "../../lib/axios";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -12,8 +16,17 @@ export function Login() {
     resolver: zodResolver(LoginSchema),
   });
 
-  function onSubmit(data: LoginData) {
-    console.log(data);
+  async function onSubmit(data: LoginData) {
+    try {
+      const response = await api.post("/auth/login", data);
+
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+
+      navigate("/home");
+    } catch (error: any) {
+      alert(error.response?.data?.message || "Erro ao fazer login");
+    }
   }
 
   return (
@@ -55,7 +68,7 @@ export function Login() {
             )}
           </div>
           <button type="submit" disabled={isSubmitting}>
-            Entrar
+            {isSubmitting ? "Entrando..." : "Entrar"}
           </button>
         </form>
         <p className="footer">
