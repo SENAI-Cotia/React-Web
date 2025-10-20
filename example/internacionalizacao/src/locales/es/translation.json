@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "brand": "The Listening",
+    "language": "Idioma"
+  },
+  "hero": {
+    "title": "Aprende Internacionalización",
+    "description": "Una guía completa para implementar internacionalización en aplicaciones web modernas. Aprende a traducir contenido, formatear fechas, números y monedas para diferentes idiomas y regiones.",
+    "cta": "¡Aprende ahora!"
+  },
+  "features": {
+    "title": "Características",
+    "translations": {
+      "title": "Traducciones",
+      "description": "Gestiona traducciones de texto para múltiples idiomas",
+      "example": "Idioma"
+    },
+    "dates": {
+      "title": "Fechas",
+      "description": "Formatea fechas según la localidad",
+      "example": "{{date, datetime}}"
+    },
+    "numbers": {
+      "title": "Número",
+      "description": "Formatea números según la localidad",
+      "example": "{{number, number}}"
+    },
+    "currency": {
+      "title": "Moneda",
+      "description": "Formatea monedas según la localidad",
+      "example": "{{price, currency}}"
+    }
+  },
+  "languages": {
+    "pt": "Portugués",
+    "en": "Inglés",
+    "es": "Español"
+  }
+}

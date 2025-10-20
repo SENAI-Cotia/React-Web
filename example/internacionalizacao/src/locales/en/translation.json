@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "brand": "The Listening",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "Learn Internationalization",
+    "description": "A complete guide to implementing internationalization in modern web applications. Learn to translate content, format dates, numbers and currencies for different languages and regions.",
+    "cta": "Learn now!"
+  },
+  "features": {
+    "title": "Features",
+    "translations": {
+      "title": "Translations",
+      "description": "Manage text translations for multiple languages",
+      "example": "Language"
+    },
+    "dates": {
+      "title": "Dates",
+      "description": "Format dates according to locale",
+      "example": "{{date, datetime}}"
+    },
+    "numbers": {
+      "title": "Number",
+      "description": "Format numbers according to locale",
+      "example": "{{number, number}}"
+    },
+    "currency": {
+      "title": "Currency",
+      "description": "Format currencies according to locale",
+      "example": "{{price, currency}}"
+    }
+  },
+  "languages": {
+    "pt": "Portuguese",
+    "en": "English",
+    "es": "Spanish"
+  }
+}
